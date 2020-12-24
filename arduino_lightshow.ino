@@ -4,7 +4,7 @@
 /* #define NUM_LEDS    20 */
 #define COLOR_ORDER GRB
 #define CHIPSET     WS2812
-#define BRIGHTNESS  127
+#define BRIGHTNESS  75
 #define FRAMES_PER_SECOND 1
 
 CRGB leds[NUM_LEDS];
@@ -19,13 +19,10 @@ void setup() {
     FastLED.setCorrection(TypicalSMD5050);
     FastLED.addLeds<CHIPSET, LED_PIN, GRB>(leds, NUM_LEDS);
     FastLED.setBrightness( BRIGHTNESS );
-    /* fill_rainbow(leds, NUM_LEDS, 0); */
-    myPalette = PartyColors_p;
-    fill_palette<CRGBPalette16>(leds, NUM_LEDS, 0, 2, myPalette,
-            BRIGHTNESS, 
-            NOBLEND
-            );
-    FastLED.show(); // display this frame
+    for (int i = 0; i < NUM_LEDS; i++) {
+        leds[i] = HeatColor(i);
+        FastLED.show(); // display this frame
+    }
 }
 
 void crawl() {
@@ -53,12 +50,8 @@ void christmasB() {
         leds[i + 1 ] = CRGB::Red;
     }
 }
-uint8_t gHue = 0;
-uint8_t gHueDelta = 3;
 
-void loop()
-{
-    return;
+void christmas_loop() {
     for (int i = 0; i < 10 * FRAMES_PER_SECOND; i++) {
         // Add entropy to random number generator; we use a lot of it.
         random16_add_entropy( random());
@@ -74,7 +67,8 @@ void loop()
         FastLED.show(); // display this frame
         FastLED.delay(1000 / FRAMES_PER_SECOND);
     }
-    crawl();
+}
 
-    gHue += gHueDelta; // compute new hue value, automatically in range
+void loop() {
+
 }
