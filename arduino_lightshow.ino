@@ -1,10 +1,10 @@
 #include <FastLED.h>
 #define LED_PIN     7
-#define NUM_LEDS    52
+#define NUM_LEDS    144
 /* #define NUM_LEDS    20 */
 #define COLOR_ORDER GRB
 #define CHIPSET     WS2812
-#define BRIGHTNESS  255
+#define BRIGHTNESS  127
 #define FRAMES_PER_SECOND 1
 
 CRGB leds[NUM_LEDS];
@@ -21,8 +21,8 @@ void setup() {
     FastLED.setBrightness( BRIGHTNESS );
     /* fill_rainbow(leds, NUM_LEDS, 0); */
     myPalette = PartyColors_p;
-    fill_palette<CRGBPalette16>(leds, 32, 0, 8, myPalette,
-            255, 
+    fill_palette<CRGBPalette16>(leds, NUM_LEDS, 0, 2, myPalette,
+            BRIGHTNESS, 
             NOBLEND
             );
     FastLED.show(); // display this frame
