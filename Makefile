@@ -1,5 +1,5 @@
-BOARD_TAG    = leonardo
+BOARD_TAG    = uno
 ARDUINO_LIBS = FastLED
-MONITOR_PORT = /dev/cu.usbmodem141101
+MONITOR_PORT = /dev/cu.usbmodem143101
 
 include /usr/local/opt/arduino-mk/Arduino.mk
