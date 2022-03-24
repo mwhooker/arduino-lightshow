@@ -1,7 +1,7 @@
 #include <FastLED.h>
 #define DATA_PIN    11
 #define CLOCK_PIN   10
-#define NUM_LEDS    30 * 5
+#define NUM_LEDS    30 * 15
 #define COLOR_ORDER GRB
 #define BRIGHTNESS  255
 #define FRAMES_PER_SECOND 60
@@ -13,6 +13,10 @@ void setup() {
     FastLED.setCorrection(TypicalSMD5050);
     FastLED.addLeds<SK9822, DATA_PIN, CLOCK_PIN, BGR>(leds, NUM_LEDS);
     FastLED.setBrightness( BRIGHTNESS );
+
+    fill_solid(leds, NUM_LEDS, CRGB::White);
+    FastLED.show(); // display this frame
+    delay(1000);
 }
 
 
